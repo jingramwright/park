@@ -1,0 +1,51 @@
+﻿# # # # # # # + + + + + @ @ @
+
+LED Strip Proximity Lighting Layout
+
+ ___________________________________________________________
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10| 11| 12| 13| 14| 15|
+ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ ___________________________________________________________
+| G | G | G | G | G | G | G | Y | Y | Y | Y | Y | R | R | R |
+ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+|<------------------------->|<----------------->|<--------->|
+             1                        2               3
+             
+User configured Maximum_Distance starting from position 1.
+
+User configured Minimmum_Distance ending at position 15.
+
+LED's light based on a linear distance from the sensor position.
+
+When the Distance_To_Vehicle < Minimmum_Distance the LED strip shall display the following:
+ ___________________________________________________________
+| R | R | R | R | R | R | R | R | R | R | R | R | R | R | R |
+ ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+ 
+Algorithm for LED Strip
+
+Range = Maximum_Distance - Minimmum_Distance;
+Distance_To_Vehicle = Current HC-SR04 Sensor Reading;
+
+if (Distance_To_Vehicle < Maximum_Distance)
+{
+  Current_Distance_From_Minimum = Distance_To_Vehicle - Minimmum_Distance;
+  
+  if (Current_Distance_To_Minimum < 0)
+  {
+    Display_Warning();
+  }
+  else
+  {
+    Current_Distance_From_Maximum = Maximum_Distance - Distance_To_Vehicle;
+    Progress_To_Minimum = Current_Distance_From_Maximum / Range;
+     
+    Leds_To_Light = Progress_To_Minimum * Number_Of_Leds;
+  
+    Display_Distance(Leds_To_Light);
+  }
+}
+else
+{
+  Display_Off();
+}

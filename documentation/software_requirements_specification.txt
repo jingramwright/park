@@ -1,0 +1,41 @@
+NOTE: These are draft requirements and are subject to change. Some may technically be implementation detail and will be moved into the design when necessary.
+      Tag headers are present but have not yet been assigned values.
+
+Requirements:
+  
+  [TAG]
+  The system shall be configurable via a WiFi access point.
+  
+  [TAG]  
+  The system shall provide a user interface in order to configure the following:
+    - Minimum distance (users desired parking position).
+    - WiFi network settings.
+      
+  [TAG]  
+  The system shall provide a visual representation of the percentage travelled through a constant maximum distance, to a user defined minimum distance, from the HC-SR04 sensor.
+  
+  [TAG]  
+  The system shall have 3 varying accuracy bands (where accuracy is determined as the ratio of the number of LEDs to the distance range), of LOW, MEDIUM, and HIGH accuracy. Respectively, these are: 100% to 60% of FULL_SENSOR_RANGE, 60% to 10% of FULL_SENSOR_RANGE, and 10% to 0% of FULL_SENSOR_RANGE (where FULL_SENSOR_RANGE is defined as MAXIMUM_DISTANCE - MINIMUM_DISTANCE).
+  
+  [TAG]  
+  The system shall use GREEN, YELLOW, and RED colours to display the LOW, MEDIUM, and HIGH accuracy bands respectively.
+  
+  [TAG]  
+  The system shall have a TIMEOUT of 10 seconds, after which the visual representation of progress shall no longer be displayed, and the STATE of the system shall be set to NO_MOVEMENT_DETECTED.
+  
+  [TAG]  
+  The system shall only provide a visual representation of progress under the circumstances that the REED_SWITCH supplies a HIGH signal.
+  
+  [TAG]  
+  The system shall have two STATE's. One for the DOOR, and another for the VEHICLE. These shall be defined as the DOOR_STATE and the VEHICLE_STATE respectively.
+  
+  [TAG]  
+  The DOOR_STATE shall take the following enumerated values:
+    - OPEN
+    - CLOSED
+  
+  [TAG]    
+  The VEHICLE_STATE shall take the following enumerated values:
+    - NO_VEHICLE_DETECTED
+    - NO_MOVEMENT_DETECTED
+    - MOVEMENT_DETECTED
