@@ -27,5 +27,5 @@ The system will be able to connect to the users preferred WiFi network (provided
   
   ## Possible Additions/Improvements
   
-The addition of MQTT functionality is one possible improvement in order for integration into a home automation server such as OpenHAB. This would allow monitoring of the garage door and vehicle position from outside of the home network.#PARK.
+The addition of MQTT functionality is one possible improvement in order for integration into a home automation server such as OpenHAB. This would allow monitoring of the garage door and vehicle position from outside of the home network.
   
